@@ -35,7 +35,7 @@ pipeline {
                         // Kill any previous running instance
                         sh "pkill -f 'java -jar' || true"
                         // Run new JAR in background
-                        sh "nohup java -jar ${jarName} > app.log 2>&1 &"
+                        sh "nohup java -jar ${jarName} --server.port=8081 > app.log 2>&1 &"
                     } else {
                         error("JAR not found in ${BUILD_DIR}")
                     }
