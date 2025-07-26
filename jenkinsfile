@@ -2,27 +2,27 @@ pipeline {
     agent any
 
     tools {
-        // These should be configured in Jenkins: Manage Jenkins > Global Tool Configuration
-        jdk 'JDK17'
-        maven 'Maven3'
+        jdk 'JDK17'         // Make sure JDK17 is configured in Jenkins
+        maven 'Maven3'      // Same for Maven
     }
 
     environment {
-        APP_NAME = 'my-springboot-app'
-        BUILD_DIR = 'target'
+        BUILD_DIR = 'app/target'
     }
 
     stages {
 
-        stage('Checkout') {
+        stage('Checkout Code') {
             steps {
-                git url: 'https://github.com/your-username/your-springboot-repo.git'
+                git url: 'https://github.com/your-username/Noter.git'
             }
         }
 
-        stage('Build JAR') {
+        stage('Build Spring Boot App') {
             steps {
-                sh 'mvn clean package -DskipTests'
+                dir('app') {
+                    sh 'mvn clean package -DskipTests'
+                }
             }
         }
 
@@ -31,10 +31,10 @@ pipeline {
                 script {
                     def jarName = sh(script: "ls ${BUILD_DIR}/*.jar | grep -v 'original' || true", returnStdout: true).trim()
                     if (jarName) {
-                        echo "Running app from $jarName"
-                        // Stop any previous instance
+                        echo "Running app: ${jarName}"
+                        // Kill any previous running instance
                         sh "pkill -f 'java -jar' || true"
-                        // Run the new jar in the background
+                        // Run new JAR in background
                         sh "nohup java -jar ${jarName} > app.log 2>&1 &"
                     } else {
                         error("JAR not found in ${BUILD_DIR}")
@@ -46,10 +46,11 @@ pipeline {
 
     post {
         success {
-            echo '✅ Spring Boot app built and started successfully!'
+            echo '✅ Spring Boot backend built and deployed!'
         }
         failure {
-            echo '❌ Build failed. Check logs.'
+            echo '❌ Build or run failed. Check the logs.'
         }
     }
 }
+
