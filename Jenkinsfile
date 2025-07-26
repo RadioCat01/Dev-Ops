@@ -14,7 +14,7 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                git url: 'https://github.com/RadioCat01/Noter'
+                git branch: 'main', url: 'https://github.com/RadioCat01/Noter'
             }
         }
 
