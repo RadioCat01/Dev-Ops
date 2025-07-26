@@ -1,0 +1,55 @@
+pipeline {
+    agent any
+
+    tools {
+        // These should be configured in Jenkins: Manage Jenkins > Global Tool Configuration
+        jdk 'JDK17'
+        maven 'Maven3'
+    }
+
+    environment {
+        APP_NAME = 'my-springboot-app'
+        BUILD_DIR = 'target'
+    }
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                git url: 'https://github.com/your-username/your-springboot-repo.git'
+            }
+        }
+
+        stage('Build JAR') {
+            steps {
+                sh 'mvn clean package -DskipTests'
+            }
+        }
+
+        stage('Run App') {
+            steps {
+                script {
+                    def jarName = sh(script: "ls ${BUILD_DIR}/*.jar | grep -v 'original' || true", returnStdout: true).trim()
+                    if (jarName) {
+                        echo "Running app from $jarName"
+                        // Stop any previous instance
+                        sh "pkill -f 'java -jar' || true"
+                        // Run the new jar in the background
+                        sh "nohup java -jar ${jarName} > app.log 2>&1 &"
+                    } else {
+                        error("JAR not found in ${BUILD_DIR}")
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo '✅ Spring Boot app built and started successfully!'
+        }
+        failure {
+            echo '❌ Build failed. Check logs.'
+        }
+    }
+}
