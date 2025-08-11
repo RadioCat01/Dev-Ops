@@ -1,0 +1,12 @@
+kind: Cluster   #Creating the cluster via KinD using Docker
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+  - role: control-plane
+  - role: worker
+    extraMounts:
+      - hostPath: /home/radiocat/IdeaProjects/Kubernetes/Worker1/
+        containerPath: /data
+  - role: worker
+    extraMounts:
+      - hostPath: /home/radiocat/IdeaProjects/Kubernetes/Worker2/
+        containerPath: /data
