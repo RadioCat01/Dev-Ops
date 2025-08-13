@@ -12,4 +12,11 @@ kubens   //List down Namespaces
 kubens <namespace> //Change the current namespace
 
 ```
+```
 
+alias k="kubectl"
+alias d="docker"
+alias t="tree -L 1"
+alias c="clear"
+
+```
