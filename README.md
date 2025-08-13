@@ -17,3 +17,13 @@ alias d="docker"
 alias t="tree -L 1"
 alias c="clear"
 ```
+## Helm Commands
+update helm chart and roll back
+```
+helm upgrade --install postgresql bitnami/postgresql \
+--version=<v> \
+--create-namespace \
+-- values=<yml file>
+
+helm rollback postgresql  //name
+```
