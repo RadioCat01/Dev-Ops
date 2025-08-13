@@ -6,3 +6,10 @@ ssh-add -l
 DOCKER_HOST=ssh://<user Name>@<public IP>   //Connect Docker CLI
 
 ```
+```
+sudo apt install kubectx  //shortcut commands for Kubernetes namespaces
+kubens   //List down Namespaces
+kubens <namespace> //Change the current namespace
+
+```
+
