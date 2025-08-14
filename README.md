@@ -16,6 +16,9 @@ docker buildx build \
 sudo apt install kubectx  //shortcut commands for Kubernetes namespaces
 kubens   //List down Namespaces
 kubens <namespace> //Change the current namespace
+
+https://learnkube.com/troubleshooting-deployments
+
 ```
 ```
 alias k="kubectl"
