@@ -4,9 +4,9 @@ nodes:
   - role: control-plane
   - role: worker
     extraMounts:
-      - hostPath: /home/radiocat/IdeaProjects/Kubernetes/Worker1/
+      - hostPath: /home/radiocat/IdeaProjects/Dev-Ops/Kubernetes/Worker1/
         containerPath: /data
   - role: worker
     extraMounts:
-      - hostPath: /home/radiocat/IdeaProjects/Kubernetes/Worker2/
+      - hostPath: /home/radiocat/IdeaProjects/Dev-Ops/Kubernetes/Worker2/
         containerPath: /data

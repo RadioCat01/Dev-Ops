@@ -44,10 +44,10 @@ pipeline {
 
     post {
         success {
-            echo '✅ Spring Boot backend built and deployed!'
+            echo 'Spring Boot backend built and deployed!'
         }
         failure {
-            echo '❌ Build or run failed. Check the logs.'
+            echo 'Build or run failed. Check the logs.'
         }
     }
 }
