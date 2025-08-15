@@ -42,3 +42,8 @@ helm upgrade --install postgresql bitnami/postgresql \
 
 helm rollback postgresql  //name
 ```
+
+## Linux
+```
+ss -nltp //list network sockets
+```
