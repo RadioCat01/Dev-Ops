@@ -26,6 +26,12 @@ alias d="docker"
 alias t="tree -L 1"
 alias c="clear"
 ```
+```
+temp load balancer for kind
+go install sigs.k8s.io/cloud-provider-kind@latest
+sudo install ~/go/bin/cloud-provider-kind /usr/local/bin
+cloud-provider-kind
+```
 ## Helm Commands
 update helm chart and roll back
 ```
