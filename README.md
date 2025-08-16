@@ -43,7 +43,14 @@ helm upgrade --install postgresql bitnami/postgresql \
 helm rollback postgresql  //name
 ```
 
-## Linux
+## Linux Networking and Firewall
 ```
 ss -nltp //list network sockets
+
+```
+### Firewall Port Configuration (Manual for Oracle VM )
+```
+sudo apt install firewalld
+sudo firewall-cmd --zone=public --permanent --add-port=<portNumber>/tcp 
+sudo firewall-cmd --reload 
 ```
