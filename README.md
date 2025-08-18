@@ -54,3 +54,5 @@ sudo apt install firewalld
 sudo firewall-cmd --zone=public --permanent --add-port=<portNumber>/tcp 
 sudo firewall-cmd --reload 
 ```
+
+http://140.245.228.222:8080/
