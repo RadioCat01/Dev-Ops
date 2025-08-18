@@ -45,8 +45,8 @@ helm rollback postgresql  //name
 
 ## Linux Networking and Firewall
 ```
-ss -nltp //list network sockets
-
+ss -nltp //list network sockets  
+nohup java -jar <app.jar> > app.log>&1 & //Run Jar on bg logs written in to app.log file
 ```
 ### Firewall Port Configuration (Manual for Oracle VM )
 ```
