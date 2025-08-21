@@ -46,6 +46,9 @@ helm rollback postgresql  //name
 ## Linux Networking and Firewall
 ```
 ss -nltp //list network sockets  
+
+sudo iptables -A INPUT -p tcp --dport 8080 -j ACCEPT 
+
 nohup java -jar <app.jar> > app.log>&1 & //Run Jar on bg logs written in to app.log file
 ```
 ### Firewall Port Configuration (Manual for Oracle VM )
