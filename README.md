@@ -49,7 +49,6 @@ ss -nltp //list network sockets
 
 sudo iptables -A INPUT -p tcp --dport 8080 -j ACCEPT 
 
-nohup java -jar <app.jar> > app.log>&1 & //Run Jar on bg logs written in to app.log file
 ```
 ### Firewall Port Configuration (Manual for Oracle VM )
 ```
@@ -57,5 +56,7 @@ sudo apt install firewalld
 sudo firewall-cmd --zone=public --permanent --add-port=<portNumber>/tcp 
 sudo firewall-cmd --reload 
 ```
-
-http://140.245.228.222:8080/
+### Java JAR
+```
+nohup java -jar <app.jar> > app.log>&1 & //Run Jar on bg logs written in to app.log file
+```
