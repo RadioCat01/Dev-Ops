@@ -60,3 +60,6 @@ sudo firewall-cmd --reload
 ```
 nohup java -jar <app.jar> > app.log>&1 & //Run Jar on bg logs written in to app.log file
 ```
+
+
+http://140.245.228.222:8080/login
