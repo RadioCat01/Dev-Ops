@@ -47,14 +47,20 @@ helm rollback postgresql  //name
 ```
 ss -nltp //list network sockets  
 
-sudo iptables -A INPUT -p tcp --dport 8080 -j ACCEPT 
+sudo iptables -A INPUT -p tcp --dport 8080 -j ACCEPT
+
+sudo ss -tulnp | grep 8080   //Check the app is running
+sudo tcpdump -i any port <portnumber> //on VM and try telnet <host> <port> to see if packets are hitting the vm
 
 ```
 ### Firewall Port Configuration (Manual for Oracle VM )
 ```
 sudo apt install firewalld
 sudo firewall-cmd --zone=public --permanent --add-port=<portNumber>/tcp 
-sudo firewall-cmd --reload 
+sudo firewall-cmd --reload
+
+sudo firewall-cmd --list-ports
+sudo firewall-cmd --list-services
 ```
 ### Java JAR
 ```
